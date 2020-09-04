@@ -6,7 +6,7 @@ package com.litiezhu.aclip.common;
 public class CommonConst {
 
     public static final String IS_DELETED_Y = "y";
-    public static final String IS_DELETED_N = "N";
+    public static final String IS_DELETED_N = "n";
 
     public interface Role {
         int CUSTOMER = 1;

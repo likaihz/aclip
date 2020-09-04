@@ -1,6 +1,8 @@
 package com.litiezhu.aclip.controller;
 
+import com.litiezhu.aclip.common.AClipException;
 import com.litiezhu.aclip.common.CommonConst;
+import com.litiezhu.aclip.common.ResponseCode;
 import com.litiezhu.aclip.common.ServerResponse;
 import com.litiezhu.aclip.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,14 +24,14 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse<String> login(String username, String password, HttpSession session) {
+    public void login(String username, String password, HttpSession session) {
         boolean loginSuccess = userService.login(username, password);
 
         if (loginSuccess) {
             session.setAttribute(CommonConst.SESSION_KEY_USERNAME, username);
-            return ServerResponse.createBySuccessMessage("登录成功");
+            return;
         } else {
-            return ServerResponse.createByErrorMessage("登录失败");
+            throw new AClipException(ResponseCode.ERROR.getCode(), "登录失败");
         }
     }
 
