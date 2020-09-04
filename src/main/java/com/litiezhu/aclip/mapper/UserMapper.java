@@ -1,5 +1,6 @@
 package com.litiezhu.aclip.mapper;
 
+import com.litiezhu.aclip.dataobject.UserDO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -9,4 +10,12 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface UserMapper {
     int selectLogin(@Param("username") String username, @Param("password") String password);
+
+    int countUserName(String userName);
+
+    int countEmail(String email);
+
+    int countPhone(String phone);
+
+    int insert(UserDO userDO);
 }

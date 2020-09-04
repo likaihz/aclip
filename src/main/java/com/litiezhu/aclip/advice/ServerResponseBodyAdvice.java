@@ -45,4 +45,11 @@ public class ServerResponseBodyAdvice implements ResponseBodyAdvice {
         log.error(e.getMessage(), e);
         return ServerResponse.createByErrorCodeMessage(e.getErrorCode(), e.getMessage());
     }
+
+    @ExceptionHandler(Exception.class)
+    @ResponseBody
+    public ServerResponse handleException(Exception e) {
+        log.error(e.getMessage(), e);
+        return ServerResponse.createByErrorMessage(e.getMessage());
+    }
 }

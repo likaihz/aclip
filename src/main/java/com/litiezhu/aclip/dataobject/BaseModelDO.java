@@ -9,7 +9,7 @@ import java.util.Date;
  */
 @Data
 public class BaseModelDO {
-    private int id;
+    private Integer id;
     private Date createTime;
     private Date updateTime;
     private String isDeleted;

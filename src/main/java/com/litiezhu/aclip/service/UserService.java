@@ -1,5 +1,7 @@
 package com.litiezhu.aclip.service;
 
+import com.litiezhu.aclip.dto.UserInfoDTO;
+
 /**
  * @author Li Kai
  */
@@ -12,4 +14,13 @@ public interface UserService {
      * @return
      */
     boolean login(String userName, String password);
+
+    /**
+     * 注册新用户。
+     *
+     * @param userInfoDTO
+     * @param password
+     * @return 用户id
+     */
+    int register(UserInfoDTO userInfoDTO, String password);
 }

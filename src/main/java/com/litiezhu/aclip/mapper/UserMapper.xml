@@ -27,4 +27,26 @@
         select count(*) from `aclip_user`
         where `username`=#{username} and `password`=#{password}
     </select>
+
+    <select id="countUserName" resultType="int">
+        select count(*) from `aclip_user`
+        where `username`=#{userName}
+    </select>
+
+    <select id="countEmail" resultType="int">
+        select count(*) from `aclip_user`
+        where `email`=#{email}
+    </select>
+
+    <select id="countPhone" resultType="int">
+        select count(*) from `aclip_user`
+        where `phone`=#{phone}
+    </select>
+
+    <insert id="insert" parameterType="com.litiezhu.aclip.dataobject.UserDO"
+            useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into `aclip_user`(`create_time`, `update_time`,
+        `username`, `password`, `email`, `phone`, `question`, `answer`, `role`)
+        values (now(), now(), #{userName}, #{passwordEncrypted}, #{email}, #{phone}, #{question}, #{answer}, 1)
+    </insert>
 </mapper>
