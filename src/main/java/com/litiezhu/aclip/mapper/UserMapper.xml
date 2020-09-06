@@ -23,9 +23,11 @@
         from `aclip_user`
     </sql>
 
-    <select id="selectLogin" resultType="int">
-        select count(*) from `aclip_user`
+    <select id="selectLogin" resultMap="BaseResultMap">
+        select
+        <include refid="SelectRows"/>
         where `username`=#{username} and `password`=#{password}
+        limit 1
     </select>
 
     <select id="countUserName" resultType="int">

@@ -20,10 +20,17 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public boolean login(String userName, String password) {
+    public UserInfoDTO login(String userName, String password) {
         String passwordEncrypted = MD5Util.MD5EncodeUtf8(password);
-        int cnt = userMapper.selectLogin(userName, passwordEncrypted);
-        return cnt > 0;
+        UserDO userDO = userMapper.selectLogin(userName, passwordEncrypted);
+        if(userDO == null) {
+            return null;
+        }
+        UserInfoDTO userInfoDTO = new UserInfoDTO();
+        BeanUtils.copyProperties(userDO, userInfoDTO);
+        userInfoDTO.setQuestion(null);
+
+        return userInfoDTO;
     }
 
     @Override

@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Param;
  */
 @Mapper
 public interface UserMapper {
-    int selectLogin(@Param("username") String username, @Param("password") String password);
+    UserDO selectLogin(@Param("username") String username, @Param("password") String password);
 
     int countUserName(String userName);
 

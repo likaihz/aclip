@@ -12,7 +12,7 @@ public class CommonConst {
         int CUSTOMER = 1;
         int ADMIN = 0;
     }
-    public static final String SESSION_KEY_USERNAME = "username";
+    public static final String SESSION_KEY_CURRENT_USER = "current_user";
 
 
 }
